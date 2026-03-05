@@ -4,7 +4,7 @@ name: CICD
 # manual click (deliver) workflow whenever user needs
 on:
   push:
-    branch: [main]
+    branches: [main]
 
 jobs:
   code:
@@ -14,21 +14,21 @@ jobs:
        run: echo "code clone from github"
 
   build:
-    needs: code
+    needs: [code]
     runs-on: ubuntu-latest
     steps:
      - name: build docker container
        run: echo "docker container build"
 
   test:
-    needs: code, build
+    needs: [code, build]
      runs-on: ubuntu-latest
      steps:
      - name: test the container
        run: echo "testing the container"
 
   deploy:
-    needs: code, build, deploy
+    needs: [code, build, deploy]
       runs-on: ubuntu-latest
       steps:
       - name: deploy the app
