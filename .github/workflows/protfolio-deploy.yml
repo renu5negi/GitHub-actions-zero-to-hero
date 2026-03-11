@@ -1,4 +1,4 @@
-name: portfilio
+name: portfolio
 
 on:
   push:
